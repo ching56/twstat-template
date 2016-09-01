@@ -544,9 +544,9 @@ function append_card(text_data,date,area){
 			/******* map *******/
 
 			var height = $("#mapid").height();
-			mapPos = $('#mapid').offset().top-screen.height*0.025;
+			mapPos = $('#mapid').offset().top-screen.height*0.1;
 		$("html, body").animate({scrollTop: mapPos }, 'fast');
-		console.log($('#mapid').offset().top+height/2);
+		console.log(mapPos);
 		$('#return-to-top').click(function() {      // When arrow is clicked
 			$("html, body").animate({scrollTop: mapPos }, 'fast');
 		});
