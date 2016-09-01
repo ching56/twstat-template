@@ -2,11 +2,11 @@
   "data": {
     "page": [
       {
-        "title": "title",
-        "url": "example",
+        "title": "單日誘捕桶病媒蚊數量報告",
+        "url": "dengue_breeding_source_report",
         "img": "images/assert/background.png",
-        "description": "description",
-        "author": "Your Name"
+        "description": "展示單日台南市病媒蚊誘捕桶的資料報告，可以看出病媒蚊產卵的區域數量以及趨勢。",
+        "author": "Pei-Hsuan Hsieh, Ching Li"
       }
     ]
   },

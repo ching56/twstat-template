@@ -1,0 +1,92 @@
+[
+    {
+        "date": "2016-8-3",
+        "bucket_list": [
+                    {
+                        "bucket_id": "1",
+<<<<<<< HEAD
+                        "image_list": "image/1.png",
+=======
+                        "image_list": "/image/1.png",
+>>>>>>> master
+                        "bucket_description": "樹林裡",
+                        "bucket_village": "東區",
+                        "bucket_lng": "120",
+                        "bucket_lat": "22",
+                        "egypt_dengue_larva": "5",
+                        "egypt_dengue_adult": "12",
+                        "white_dengue_larva": "13",
+                        "white_dengue_adult": "24"
+                    },
+                    {
+                        "bucket_id": "2",
+<<<<<<< HEAD
+                        "image_list": "image/3.png",
+=======
+                        "image_list": "/image/3.png",
+>>>>>>> master
+                        "bucket_description": "廣場室內",
+                        "bucket_village": "東區",
+                        "bucket_lng": "120",
+                        "bucket_lat": "22",
+                        "egypt_dengue_larva": "1",
+                        "egypt_dengue_adult": "2",
+                        "white_dengue_larva": "3",
+                        "white_dengue_adult": "4"
+                    }
+        ]
+    },
+    {
+        "date": "2016-8-4",
+        "bucket_list": [
+                    {
+                        "bucket_id": "3",
+<<<<<<< HEAD
+                        "image_list": "image/2.png",
+=======
+                        "image_list": "/image/2.png",
+>>>>>>> master
+                        "bucket_description": "XX路旁的草叢",
+                        "bucket_village": "東區",
+                        "bucket_lng": "120",
+                        "bucket_lat": "21",
+                        "egypt_dengue_larva": "1",
+                        "egypt_dengue_adult": "12",
+                        "white_dengue_larva": "5",
+                        "white_dengue_adult": "7"
+                    },
+                    {
+                        "bucket_id": "4",
+<<<<<<< HEAD
+                        "image_list": "image/4.png",
+=======
+                        "image_list": "/image/4.png",
+>>>>>>> master
+                        "bucket_description": "XX路旁的草叢",
+                        "bucket_village": "東區",
+                        "bucket_lng": "121",
+                        "bucket_lat": "22",
+                        "egypt_dengue_larva": "10",
+                        "egypt_dengue_adult": "2",
+                        "white_dengue_larva": "13",
+                        "white_dengue_adult": "4"
+                    },
+                    {
+                        "bucket_id": "4",
+<<<<<<< HEAD
+                        "image_list": "image/5.png",
+=======
+                        "image_list": "/image/5.png",
+>>>>>>> master
+                        "bucket_description": "XX路旁的草叢",
+                        "bucket_village": "東區",
+                        "bucket_lng": "121",
+                        "bucket_lat": "22",
+                        "egypt_dengue_larva": "10",
+                        "egypt_dengue_adult": "20",
+                        "white_dengue_larva": "13",
+                        "white_dengue_adult": "4"
+                    }
+        ]
+    }
+]

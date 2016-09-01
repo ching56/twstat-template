@@ -1,0 +1,151 @@
+<html>
+
+<head>
+    <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css">
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    <meta property="og:title" content="用數據看台灣 - 單日誘捕桶病媒蚊數量報告">
+    <meta property="og:site_name" content="用數據看台灣 - 單日誘捕桶病媒蚊數量報告">
+    <meta property="og:description" content="展示單日台南市病媒蚊誘捕桶的資料報告，可以看出病媒蚊產卵的區域數量以及趨勢。">
+    <title>用數據看台灣 - 單日誘捕桶病媒蚊數量報告</title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <meta property="og:image" content="http://real.taiwanstat.com/images/assert/background.png">
+    <meta property="og:image:type" content="image/png">
+    <meta name="author" content="Pei-Hsuan Hsieh, Ching Li">
+    <meta name="citation_authors" content="Pei-Hsuan Hsieh, Ching Li">
+    <meta name="description" content="展示單日台南市病媒蚊誘捕桶的資料報告，可以看出病媒蚊產卵的區域數量以及趨勢。 Author: Pei-Hsuan Hsieh, Ching Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/bower_components/semantic/dist/semantic.min.css" type="text/css">
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js" async=""></script>
+    <link rel="stylesheet" href="http://real.taiwanstat.com/css/style.min.css" type="text/css" media="all">
+    <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="js/leaflet-heat.js"></script>
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" id="layout-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row"> <span class="mdl-layout-title"><a href="http://real.taiwanstat.com/" style="color: #FFF"><img src="http://real.taiwanstat.com/images/assert/round-logo.png" id="round-logo">用數據看台灣</a></span>
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation mdl-layout--large-screen-only"> <a class="mdl-navigation__link" href="http://real.taiwanstat.com/">台灣開放即時資料</a> <a class="mdl-navigation__link" href="http://long.taiwanstat.com">台灣開放統計資料</a> <a class="mdl-navigation__link" href="http://global.taiwanstat.com/r/">世界即時資訊</a> <a class="mdl-navigation__link" href="http://global.taiwanstat.com/l/">世界統計資訊</a> <a class="mdl-navigation__link" href="http://taiwanstat.com/opendata">開放資料分析部落格</a> <a class="mdl-navigation__link" href="https://www.facebook.com/taiwanstat">Facebook 粉專</a> </nav>
+                <div></div>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer"> <span class="mdl-layout-title"><a href="http://real.taiwanstat.com/"><img src="/images/assert/round-logo.png" id="round-logo">用數據看台灣</a></span>
+            <nav class="mdl-navigation"> <a class="mdl-navigation__link" href="http://real.taiwanstat.com/">台灣開放即時資料</a> <a class="mdl-navigation__link" href="http://long.taiwanstat.com">台灣開放統計資料</a> <a class="mdl-navigation__link" href="http://global.taiwanstat.com/r/">世界即時資訊</a> <a class="mdl-navigation__link" href="http://global.taiwanstat.com/l/">世界統計資訊</a> <a class="mdl-navigation__link" href="http://taiwanstat.com/opendata">開放資料分析部落格</a> <a class="mdl-navigation__link" href="https://www.facebook.com/taiwanstat">Facebook 粉專</a> </nav>
+        </div>
+        </div>
+        <main class="mdl-layout__content" id="main-content">
+            <div class="title__wrapper">
+                <h1 id="title">    單日誘捕桶病媒蚊數量報告  </h1>
+                <div class="fb-plugin">
+                    <div class="fb-like" data-href="http://real.taiwanstat.com/dengue_breeding_source_report" data-width="300px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+                </div>
+            </div>
+            <div id="chart">
+                <div class="title">
+                    <div class="ui container" id="inputs">
+                        <div class="ui calendar input_field" id="datepicker">
+                            <span>查詢日：</span>
+                            <div class="ui input left icon">
+                                <i class="calendar icon"></i>
+                                <input type="text" placeholder="調查日期">
+                            </div>
+                        </div>
+                        <div class="input_field">
+                            <span>查詢區：</span>
+                            <div class="ui search selection dropdown" id="district_area">
+                                <input type="hidden" name="country">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">選擇區</div>
+                                <div class="menu">
+                                    <div class="item" data-value="">所有區</div>
+                                    <div class="item" data-value="東區">東區</div>
+                                    <div class="item" data-value="北區">北區</div>
+                                    <div class="item" data-value="中西區">中西區</div>
+                                    <div class="item" data-value="安平區">安平區</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="summarized_info">
+                        </div>
+                        <!--    <div class="input_field">
+                    <span>里：</span>
+                    <div class="ui search selection dropdown" id="district_area">
+                        <input type="hidden" name="country">
+                          <i class="dropdown icon"></i>
+                          <div class="default text">選擇里</div>
+                          <div class="menu">
+                              <div class="item" data-value="">所有里</div>
+                              <div class="item" data-value="大同里">大同里</div>
+                              <div class="item" data-value="大智里">大智里</div>    
+                              <div class="item" data-value="大福里">大福里</div>    
+                              <div class="item" data-value="大德里">大德里</div>    
+                          </div>
+                    </div>
+                </div>-->
+                        <br>
+                    </div>
+                    <div class="ui container">
+                        <div class="ui three stackable cards" id="cards_content">
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-card mdl-shadow author">
+                    <h4><a href="http://taiwanstat_members.cannerapp.com/">About Author</a></h4> <img class="ui circular image" src="/images/assert/background.png">
+                    <div class="author-info">
+                        <h5>Pei-Hsuan Hsieh, Ching Li</h5></div>
+                </div>
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="創用 CC 授權條款" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+                <br>本著作由<a xmlns:cc="http://creativecommons.org/ns#" href="http://www.taiwanstat.com" property="cc:attributionName" rel="cc:attributionURL">用數據看台灣團隊</a>製作，以<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">創用CC 姓名標示-非商業性-相同方式分享 4.0 國際 授權條款</a>釋出。</div>
+        </main>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.9/d3.min.js"></script>
+    <script src="/bower_components/semantic/dist/semantic.min.js"></script>
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-61023469-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    <div id="fb-root"></div>
+    <script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.5";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
+    <script src="js/main.js"></script>
+    <div class="footer-mobile">
+        <button class="scrollup mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--2dp" id="set"> <i class="material-icons">keyboard_arrow_up</i> </button>
+    </div>
+    <footer class="mdl-mini-footer">
+        <div class="mdl-mini-footer__left-section">© 2015 <a href="http://taiwanstat-about-us.cannerapp.com">用數據看台灣</a> · <a href="http://netdb.csie.ncku.edu.tw">NCKU-NetDB</a> · <a href="https://www.facebook.com/taiwanstat/?fref=ts"><i class="facebook icon"></i></a> </div>
+        <div class="mdl-mini-footer__right-section"> <span class="footer_msg">合作提案、客製化圖表製作、意見回饋  </span> 歡迎來信: <a href="mailto:contact@taiwanstat.com">contact@taiwanstat.com</a> </div>
+    </footer>
+    <script src="http://real.taiwanstat.com/js/main.min.js" async=""></script>
+</body>
+
+</html>
